@@ -6,6 +6,7 @@
  */
 
 #include <string>
+#include "ParametroNoValido.h"
 #ifndef TEMAZO_H
 #define	TEMAZO_H
 
@@ -25,11 +26,14 @@ public:
     std::string getInterprete() const;
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
+    void incrementarPuntuacion(int puntos);
+    void decrementarPuntuacionTotal(int puntos);
 private:
     std::string titulo; ///< Título de la canción
     std::string interprete; ///< Intérprete
     int duracion; ///< Duración en segundos
     int puntuacion; ///< Puntuación en función de cómo la acoge el público
+    int numTemazos, puntuacionTotal;
 };
 
 #endif	/* TEMAZO_H */

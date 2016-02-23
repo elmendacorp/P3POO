@@ -5,16 +5,19 @@
  * @date 12 de octubre de 2015, 17:08
  */
 #include "Temazo.h"
-
+#include "ParametroNoValido.h"
 /**
  * @brief Constructor por defecto de la clase
  * @post Crea un objeto de tipo Temazo
  */
-Temazo::Temazo() :
-titulo("")
-, interprete("")
-, duracion(0)
-, puntuacion(0) {
+Temazo::Temazo() {
+  this->titulo= "";
+  this->interprete= "";
+  this->duracion = 0; 
+  this->puntuacion = 0;
+  this->numTemazos = 0;
+  this->puntuacionTotal = 0;
+
 }
 
 /**
@@ -112,3 +115,30 @@ std::string Temazo::getTitulo() const {
     return titulo;
 }
 
+void Temazo::incrementarPuntuacion(int puntos){
+    if(puntos < 0){
+        ParametroNoValido parametro("Temazo.cpp","incrementarPuntuacion","puntos < 0");
+        throw parametro.QueOcurre();
+    }else{
+        if(puntos+this->puntuacionTotal >10){
+            ParametroNoValido parametro("Temazo.cpp","incrementarPuntuacion","puntos+this->puntuacionTotal >10");
+            throw parametro.QueOcurre();
+        }else{
+            this->puntuacionTotal = this->puntuacionTotal + puntos;
+        }
+    }
+}
+
+void Temazo::decrementarPuntuacionTotal(int puntos){
+    if(puntos < 0){
+        ParametroNoValido parametro("Temazo.cpp","decrementarPuntuacionTotal","puntos < 0");
+        throw parametro.QueOcurre();
+    }else{
+        if(this->puntuacionTotal-puntos <0){
+            ParametroNoValido parametro("Temazo.cpp","decrementarPuntuacionTotal","puntuacionTotal-puntos <0");
+            throw parametro.QueOcurre();
+        }else{
+            this->puntuacionTotal = this->puntuacionTotal - puntos;
+        }
+    }
+}
