@@ -34,6 +34,7 @@ private:
     int duracion; ///< Duración en segundos
     int puntuacion; ///< Puntuación en función de cómo la acoge el público
     int numTemazos, puntuacionTotal;
+    
 };
 
 #endif	/* TEMAZO_H */
