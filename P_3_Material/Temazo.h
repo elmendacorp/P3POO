@@ -26,14 +26,17 @@ public:
     std::string getInterprete() const;
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
-    void incrementarPuntuacion(int puntos);
+    void incrementarPuntuacionTotal(int puntos);
     void decrementarPuntuacionTotal(int puntos);
+    bool debeEstarEnLaLista();
+    void incrementarPuntuacion(int puntos);
 private:
     std::string titulo; ///< Título de la canción
     std::string interprete; ///< Intérprete
     int duracion; ///< Duración en segundos
     int puntuacion; ///< Puntuación en función de cómo la acoge el público
-    int numTemazos, puntuacionTotal;
+    static int numTemazos;
+    static int puntuacionTotal;
     
 };
 

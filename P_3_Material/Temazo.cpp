@@ -6,18 +6,20 @@
  */
 #include "Temazo.h"
 #include "ParametroNoValido.h"
+#include <iostream>
 /**
  * @brief Constructor por defecto de la clase
  * @post Crea un objeto de tipo Temazo
  */
+int Temazo::numTemazos=0;
+int Temazo::puntuacionTotal=0;
 Temazo::Temazo() {
   this->titulo= "";
   this->interprete= "";
   this->duracion = 0; 
   this->puntuacion = 0;
-  this->numTemazos = 0;
-  this->puntuacionTotal = 0;
-
+  numTemazos++;
+  
 }
 
 /**
@@ -33,6 +35,8 @@ titulo(titulo)
 , interprete(interprete)
 , duracion(duracion)
 , puntuacion(puntuacion) {
+    this->incrementarPuntuacionTotal(puntuacion);
+    numTemazos++;
 }
 
 /**
@@ -53,6 +57,8 @@ titulo(orig.titulo)
  * @post Destruye el objeto
  */
 Temazo::~Temazo() {
+    numTemazos--;
+    decrementarPuntuacionTotal(this->puntuacion);
 }
 
 
@@ -115,14 +121,14 @@ std::string Temazo::getTitulo() const {
     return titulo;
 }
 
-void Temazo::incrementarPuntuacion(int puntos){
+void Temazo::incrementarPuntuacionTotal(int puntos){
     if(puntos < 0){
         ParametroNoValido parametro("Temazo.cpp","incrementarPuntuacion","puntos < 0");
-        throw parametro.QueOcurre();
+        throw parametro;
     }else{
-        if(puntos+this->puntuacionTotal >10){
-            ParametroNoValido parametro("Temazo.cpp","incrementarPuntuacion","puntos+this->puntuacionTotal >10");
-            throw parametro.QueOcurre();
+        if(puntos>10){
+            ParametroNoValido parametro("Temazo.cpp","incrementarPuntuacion","puntos>10");
+            throw parametro;
         }else{
             this->puntuacionTotal = this->puntuacionTotal + puntos;
         }
@@ -132,13 +138,31 @@ void Temazo::incrementarPuntuacion(int puntos){
 void Temazo::decrementarPuntuacionTotal(int puntos){
     if(puntos < 0){
         ParametroNoValido parametro("Temazo.cpp","decrementarPuntuacionTotal","puntos < 0");
-        throw parametro.QueOcurre();
+        throw parametro;
     }else{
-        if(this->puntuacionTotal-puntos <0){
-            ParametroNoValido parametro("Temazo.cpp","decrementarPuntuacionTotal","puntuacionTotal-puntos <0");
-            throw parametro.QueOcurre();
+        if(puntos <0){
+            ParametroNoValido parametro("Temazo.cpp","decrementarPuntuacionTotal","puntos <0");
+            throw parametro;
         }else{
             this->puntuacionTotal = this->puntuacionTotal - puntos;
         }
+    }
+}
+
+bool Temazo::debeEstarEnLaLista(){
+    int media;
+    media = puntuacionTotal/numTemazos;
+    if(this->getPuntuacion() >= media){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void Temazo::incrementarPuntuacion(int puntos){
+    if((puntos>10)||(puntos<0)){
+        throw ParametroNoValido("Temazo.cpp","incrementrarPuntuacion","puntos>10)||(puntos<0");
+    }else{
+    this->puntuacion=+puntos;
     }
 }

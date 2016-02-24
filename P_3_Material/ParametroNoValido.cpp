@@ -14,6 +14,9 @@
 #include "ParametroNoValido.h"
 
 ParametroNoValido::ParametroNoValido(string fichero, string funcion, string descripcion) {
+    this->fichero = fichero;
+    this->funcion = funcion;
+    this->descripcion = descripcion;
 }
 
 ParametroNoValido::ParametroNoValido(const ParametroNoValido& orig) {

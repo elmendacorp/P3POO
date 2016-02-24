@@ -12,6 +12,7 @@
 #include "Garito.h"
 #include "Fecha.h"
 #include "djutils.h"
+#include "ParametroNoValido.h"
 
 using namespace std;
 
@@ -22,35 +23,42 @@ using namespace std;
  * @return 0 si todo funciona bien; distinto de 0 en otro caso.
  */
 int main(int argc, char** argv) {
-    cout << "POO: Práctica 2 resuelta" << endl;
-    // 2 temazos: uno usando el constructor por defecto y otro usando el parametrizado
-    Temazo tema1;
-    Temazo tema2("Vaya torito", "El Fari", 194, 10);
+    try{
 
+    cout << "POO: Práctica 3 resuelta" << endl;
+    // 2 temazos: uno usando el constructor por defecto y otro usando el parametrizado
+    Temazo temas[50];
+    temas[0]=Temazo("Vaya torito", "El Fari", 194, 0);
+    temas[1]=Temazo("entradaTriunfal","El Fari", 195,0);
+    temas[2]=temas[1];
+        
     // 2 garitos: uno usando el constructor parametrizado y otro  usando el constructor de copia
-    Garito local1("Bar Felipe Sanchez", "C/ Besugo nº 4, 72123, Alcornarejo");
-    Garito local2 = local1;
+    Garito garitos[20];
+    garitos[0]=Garito("Bar Felipe Sanchez", "C/ Besugo nº 4, 72123, Alcornarejo");
+    garitos[1]=garitos[0];
 
     // 2 fechas: una usando el constructor por defecto y otra el constructor parametrizado.
     Fecha fecha1;
     Fecha fecha2(12, 10, 2016);
-
-
-    cout << "En primer lugar mostramos datos SIN usar menú." << endl << endl;
-    // A continuación, usando las funciones de la biblioteca auxiliar, escribir los datos de los temazos, los garitos y las fechas en pantalla.
-    djutils::mostrarTemazo(tema1);
-    djutils::mostrarTemazo(tema2);
-    djutils::mostrarGarito(local1);
-    djutils::mostrarGarito(local2);
-    djutils::mostrarFecha(fecha1);
-    djutils::mostrarFecha(fecha2);
-    /*
-            Finalmente, modificar los datos del 2º garito(el que hemos creado por copia) y luego escribir en pantalla los nuevos datos del mismo, usando para ello las funciones declaradas en la biblioteca de funciones auxiliares.
-     * */
-
-    djutils::pedirGarito(local2);
-    djutils::mostrarGarito(local2);
-
+    
+    
+    djutils::mostrarTemazo(temas[2]);
+    for(int i=0;i<10;i++){
+        djutils::mostrarGarito(garitos[i]);
+    }
+    for(int i=0;i<3;i++){
+        djutils::mostrarTemazo(temas[i]);
+    }
+    for(int i=0;i<3;i++){
+        temas[i].incrementarPuntuacion((i+1)*5);
+    }
+    for(int i=0;i<3;i++){
+        if(temas[i].debeEstarEnLaLista()){
+            djutils::mostrarTemazo(temas[i]);
+            cout << "debe estar en lista." <<endl;
+        }
+    }
+    
     /*
 
             6. (Opcional) Crear un menú que permita al usuario decidir si quiere : a) mostrar los datos de los Temazos;
@@ -69,7 +77,7 @@ int main(int argc, char** argv) {
         cout << " [1] Mostrar datos de temazos " << endl;
         cout << " [2] Mostrar datos de garitos " << endl;
         cout << " [3] Mostrar datos de fechas " << endl;
-        cout << " [4] Modificar los datos del segundo garito" << endl;
+        cout << " [4] Modificar los datos del garito x" << endl;
         cout << endl;
         cout << " [0] Salir del programa" << endl;
         cin >> opcion;
@@ -83,14 +91,12 @@ int main(int argc, char** argv) {
             }
             case 1:
             {
-                djutils::mostrarTemazo(tema1);
-                djutils::mostrarTemazo(tema2);
+               
                 break;
             }
             case 2:
             {
-                djutils::mostrarGarito(local1);
-                djutils::mostrarGarito(local2);
+                
                 break;
             }
             case 3:
@@ -101,9 +107,10 @@ int main(int argc, char** argv) {
             }
             case 4:
             {
-
-                djutils::pedirGarito(local2);
-                djutils::mostrarGarito(local2);
+                int x;
+                cout<< "garito: ";
+                cin >> x;
+                djutils::pedirGarito(garitos[x]);
                 break;
             }
             default:
@@ -119,7 +126,10 @@ int main(int argc, char** argv) {
         }
     } while (opcion != 0);
 
-
     return 0;
-}
+    }catch (ParametroNoValido &parametro){
+        cout << "excepcion en: " << parametro.QueOcurre() << endl;
+    }
+
+    }
 
