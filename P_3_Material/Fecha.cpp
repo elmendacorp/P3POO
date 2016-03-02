@@ -130,4 +130,30 @@ bool Fecha::operator ==(const Fecha& fecha){
     return false;
 }
 
-bool Fecha::
+bool Fecha::operator <=(const Fecha& fecha){
+    if((*this==fecha)&&(*this<fecha)){
+        return true;
+    }
+    return false;
+}
+
+bool Fecha::operator !=(const Fecha& fecha){
+    if(*this==fecha){
+        return false;
+    }
+    return true;
+}
+
+bool Fecha::operator >(const Fecha& fecha){
+    if(*this<fecha){
+        return false;
+    }
+    return true;
+}
+
+bool Fecha::operator >=(const Fecha& fecha){
+    if(*this<fecha){
+        return false;
+    }
+    return true;
+}
