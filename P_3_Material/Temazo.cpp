@@ -18,6 +18,8 @@ Temazo::Temazo() {
   this->interprete= "";
   this->duracion = 0; 
   this->puntuacion = 0;
+  this->nombreUltimoGarito="";
+  this->fecha=Fecha();
   numTemazos++;
   
 }
@@ -30,12 +32,14 @@ Temazo::Temazo() {
  * @param puntuacion Puntuación otorgada por el público
  * @post Crea un objeto de tipo Temazo
  */
-Temazo::Temazo(std::string titulo, std::string interprete, int duracion, int puntuacion) :
+Temazo::Temazo(std::string titulo, std::string interprete, int duracion, int puntuacion, string ultimoGarito, Fecha fecha) :
 titulo(titulo)
 , interprete(interprete)
 , duracion(duracion)
 , puntuacion(puntuacion) {
     this->incrementarPuntuacionTotal(puntuacion);
+    this->nombreUltimoGarito = ultimoGarito;
+    this->fecha= fecha;
     numTemazos++;
 }
 
@@ -119,6 +123,22 @@ void Temazo::setTitulo(std::string titulo) {
  */
 std::string Temazo::getTitulo() const {
     return titulo;
+}
+
+string Temazo::getNombreUltimoGarito(){
+    return this->nombreUltimoGarito;
+}
+
+Fecha Temazo::getFecha(){
+    return this->fecha;
+}
+
+void Temazo::setFecha(Fecha fecha){
+    this->fecha = fecha;
+}
+
+void Temazo::setUltimoGarito(string ultimoGarito){
+    this->nombreUltimoGarito = ultimoGarito;
 }
 
 void Temazo::incrementarPuntuacionTotal(int puntos){

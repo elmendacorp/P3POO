@@ -7,6 +7,7 @@
 
 #include <string>
 #include "ParametroNoValido.h"
+#include "Fecha.h"
 #ifndef TEMAZO_H
 #define	TEMAZO_H
 
@@ -16,7 +17,7 @@
 class Temazo {
 public:
     Temazo();
-    Temazo(std::string titulo, std::string interprete, int duracion, int puntuacion=0);
+    Temazo(std::string titulo, std::string interprete, int duracion, int puntuacion,string ultimoGarito, Fecha fecha);
     Temazo(const Temazo& orig);
     virtual ~Temazo();
     int getPuntuacion() const;
@@ -26,6 +27,10 @@ public:
     std::string getInterprete() const;
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
+    Fecha getFecha();
+    string getNombreUltimoGarito();
+    void setFecha(Fecha fecha);
+    void setUltimoGarito(string ultimoGarito);
     void incrementarPuntuacionTotal(int puntos);
     void decrementarPuntuacionTotal(int puntos);
     bool debeEstarEnLaLista();
@@ -37,6 +42,9 @@ private:
     int puntuacion; ///< Puntuación en función de cómo la acoge el público
     static int numTemazos;
     static int puntuacionTotal;
+    string nombreUltimoGarito;
+    Fecha fecha;
+    
     
 };
 

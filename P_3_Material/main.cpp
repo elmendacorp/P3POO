@@ -28,8 +28,8 @@ int main(int argc, char** argv) {
     cout << "POO: Práctica 3 resuelta" << endl;
     // 2 temazos: uno usando el constructor por defecto y otro usando el parametrizado
     Temazo temas[50];
-    temas[0]=Temazo("Vaya torito", "El Fari", 194, 0);
-    temas[1]=Temazo("entradaTriunfal","El Fari", 195,0);
+    temas[0]=Temazo("Vaya torito", "El Fari", 194, 0,"",Fecha());
+    temas[1]=Temazo("entradaTriunfal","El Fari", 195,0,"",Fecha());
     temas[2]=temas[1];
         
     // 2 garitos: uno usando el constructor parametrizado y otro  usando el constructor de copia

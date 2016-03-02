@@ -23,6 +23,12 @@ public:
     int getMes() const;
     void setDia(int dia);
     int getDia() const;
+    bool operator <(const Fecha& fecha);
+    bool operator == (const Fecha& fecha);
+    bool operator >= (const Fecha& fecha);
+    bool operator <= (const Fecha& fecha);
+    bool operator != (const Fecha& fecha);
+    bool operator > (const Fecha& fecha);
 private:
     int dia; ///< Dia dentro de un mes
     int mes; ///< Mes dentro de un año

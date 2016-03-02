@@ -106,3 +106,28 @@ int Fecha::getDia() const {
     return dia;
 }
 
+bool Fecha::operator <(const Fecha& fecha){
+    if(this->anio<fecha.anio){
+        return true;
+    }else{
+        if(this->anio==fecha.anio){
+            if(this->mes<fecha.mes){
+                return true;
+            }else{
+                if(this->dia<fecha.dia){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool Fecha::operator ==(const Fecha& fecha){
+    if((this->anio==fecha.anio)&&(this->mes==fecha.mes)&&(this->dia==fecha.dia)){
+        return true;
+    }
+    return false;
+}
+
+bool Fecha::
