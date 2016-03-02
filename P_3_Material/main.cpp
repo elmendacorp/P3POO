@@ -27,16 +27,19 @@ int main(int argc, char** argv) {
 
     cout << "POO: Práctica 3 resuelta" << endl;
     // 2 temazos: uno usando el constructor por defecto y otro usando el parametrizado
-    Temazo temas[50];
-    temas[0]=Temazo("Vaya torito", "El Fari", 194, 0,"",Fecha());
-    temas[1]=Temazo("entradaTriunfal","El Fari", 195,0,"",Fecha());
-    temas[2]=temas[1];
+    Temazo temas[20];
+    Garito * pMiCasa= new Garito();
         
     // 2 garitos: uno usando el constructor parametrizado y otro  usando el constructor de copia
-    Garito garitos[20];
+    Garito * garitos=new Garito[10];
     garitos[0]=Garito("Bar Felipe Sanchez", "C/ Besugo nº 4, 72123, Alcornarejo");
     garitos[1]=garitos[0];
 
+    *pMiCasa= garitos[0];
+    
+    temas[0]=Temazo("Vaya torito", "El Fari", 194, 0,pMiCasa->getDireccion(),Fecha(24,5,2014));
+    temas[1]=Temazo("entradaTriunfal","El Fari", 195,0,garitos[0].getDireccion(),Fecha(6,6,2015));
+    temas[2]=temas[1];
     // 2 fechas: una usando el constructor por defecto y otra el constructor parametrizado.
     Fecha fecha1;
     Fecha fecha2(12, 10, 2016);
