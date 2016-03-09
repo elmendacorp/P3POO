@@ -13,6 +13,7 @@
 #include "Fecha.h"
 #include "djutils.h"
 #include "ParametroNoValido.h"
+#include<fstream>
 
 using namespace std;
 
@@ -53,13 +54,35 @@ int main(int argc, char** argv) {
         djutils::mostrarTemazo(temas[i]);
     }
     for(int i=0;i<3;i++){
-        temas[i].incrementarPuntuacion((i+1)*5);
+        temas[i].incrementarPuntuacion((i+1));
     }
     for(int i=0;i<3;i++){
         if(temas[i].debeEstarEnLaLista()){
             djutils::mostrarTemazo(temas[i]);
             cout << "debe estar en lista." <<endl;
         }
+    }
+    Temazo tema1("Vaya torito", "El Fari", 194, 0,"aldeavieja",Fecha(24,5,2014)),tema2("Vaya torito", "El Fari2", 194, 0,"aldeavieja",Fecha(24,5,2014));
+    Garito garito1("Bar Felipe Sanchez1", "C/ Besugo nº 4, 72123, Alcornarejo"),garito2("Bar Felipe Sanchez2", "C/ Besugo nº 4, 72123, Alcornarejo"),garito3("Bar Felipe Sanchez3", "C/ Besugo nº 4, 72123, Alcornarejo");
+    Fecha fecha11(12, 10, 2016),fecha21(13, 10, 2016),fecha3(14, 10, 2016),fecha4(15, 10, 2016);
+    
+    ofstream f;
+    string archivo = "temazos.txt";
+    f.open(archivo.c_str());
+    if(f.good()){
+        f <<"comienzo de datos"<<endl;
+        f << tema1.toCVS()<<endl;
+        f << tema2.toCVS()<<endl;
+        f << garito1.toCVS()<<endl;
+        f << garito2.toCVS()<<endl;
+        f << fecha11.toCVS()<<endl;
+        f << fecha21.toCVS()<<endl;
+        f << fecha3.toCVS()<<endl;
+        f << fecha4.toCVS()<<endl;
+        f.close();
+        
+    }else{
+        cout << "error al abrir";
     }
     
     /*

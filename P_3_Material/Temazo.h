@@ -8,6 +8,7 @@
 #include <string>
 #include "ParametroNoValido.h"
 #include "Fecha.h"
+#include "Garito.h"
 #ifndef TEMAZO_H
 #define	TEMAZO_H
 
@@ -28,13 +29,14 @@ public:
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
     Fecha getFecha();
-    string getNombreUltimoGarito();
+    Garito getNombreUltimoGarito();
     void setFecha(Fecha fecha);
-    void setUltimoGarito(string ultimoGarito);
+    void setUltimoGarito(Garito ultimoGarito);
     void incrementarPuntuacionTotal(int puntos);
     void decrementarPuntuacionTotal(int puntos);
     bool debeEstarEnLaLista();
     void incrementarPuntuacion(int puntos);
+    string toCVS();
 private:
     std::string titulo; ///< Título de la canción
     std::string interprete; ///< Intérprete
@@ -42,7 +44,7 @@ private:
     int puntuacion; ///< Puntuación en función de cómo la acoge el público
     static int numTemazos;
     static int puntuacionTotal;
-    string nombreUltimoGarito;
+    Garito nombreUltimoGarito;
     Fecha fecha;
     
     

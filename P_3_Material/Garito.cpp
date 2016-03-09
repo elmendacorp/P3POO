@@ -6,6 +6,7 @@
  */
 
 #include "Garito.h"
+#include <sstream>
 
 /**
  * @brief Constructor por defecto de la clase
@@ -70,3 +71,10 @@ std::string Garito::getNombre() const {
     return nombre;
 }
 
+string Garito::toCVS(){
+    string cadena;
+    stringstream cadena1;
+    cadena1 << this->getNombre()<<";"<<this->getDireccion()<<";";
+    cadena = cadena1.str();
+    return cadena;
+}

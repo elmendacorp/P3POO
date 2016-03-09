@@ -7,6 +7,7 @@
 #include "Temazo.h"
 #include "ParametroNoValido.h"
 #include <iostream>
+#include <sstream>
 /**
  * @brief Constructor por defecto de la clase
  * @post Crea un objeto de tipo Temazo
@@ -18,7 +19,7 @@ Temazo::Temazo() {
   this->interprete= "";
   this->duracion = 0; 
   this->puntuacion = 0;
-  this->nombreUltimoGarito="";
+  this->nombreUltimoGarito=Garito();
   this->fecha=Fecha();
   numTemazos++;
   
@@ -125,7 +126,7 @@ std::string Temazo::getTitulo() const {
     return titulo;
 }
 
-string Temazo::getNombreUltimoGarito(){
+Garito Temazo::getNombreUltimoGarito(){
     return this->nombreUltimoGarito;
 }
 
@@ -137,8 +138,8 @@ void Temazo::setFecha(Fecha fecha){
     this->fecha = fecha;
 }
 
-void Temazo::setUltimoGarito(string ultimoGarito){
-    this->nombreUltimoGarito = ultimoGarito;
+void Temazo::setUltimoGarito(Garito ultimoGarito){
+    this->nombreUltimoGarito = Garito(ultimoGarito);
 }
 
 void Temazo::incrementarPuntuacionTotal(int puntos){
@@ -185,4 +186,12 @@ void Temazo::incrementarPuntuacion(int puntos){
     }else{
     this->puntuacion=+puntos;
     }
+}
+
+string Temazo::toCVS(){
+    string cadena;
+    stringstream cadena1;
+    cadena1 << this->getTitulo()<<";"<<this->getInterprete()<<";"<<this->getDuracion()<<";"<<this->getPuntuacion()<<";"<<this->getNombreUltimoGarito().toCVS()<<";"<<this->getFecha().toCVS();
+    cadena = cadena1.str();
+    return(cadena);
 }

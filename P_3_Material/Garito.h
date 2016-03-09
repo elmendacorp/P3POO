@@ -8,6 +8,8 @@
 
 #include <string>
 
+using namespace std;
+
 #ifndef GARITO_H
 #define	GARITO_H
 /**
@@ -22,6 +24,7 @@ public:
     std::string getDireccion() const;
     void setNombre(std::string nombre);
     std::string getNombre() const;
+    string toCVS();
 private:
     std::string nombre; ///< Nombre del local
     std::string direccion; ///< Dirección del local

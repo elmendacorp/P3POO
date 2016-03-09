@@ -6,6 +6,7 @@
  */
 #include <time.h>
 #include "Fecha.h"
+#include <sstream>
 
 /**
  * @brief Constructor por defecto de la clase
@@ -156,4 +157,12 @@ bool Fecha::operator >=(const Fecha& fecha){
         return false;
     }
     return true;
+}
+
+string Fecha::toCVS(){
+    string cadena;
+    stringstream cadena1;
+    cadena1 << this->getAnio()<<';'<<this->getMes()<<';'<<this->getDia()<<';';
+    cadena = cadena1.str();
+    return cadena;
 }

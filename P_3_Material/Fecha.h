@@ -8,6 +8,11 @@
 
 #ifndef FECHA_H
 #define	FECHA_H
+
+#include <string>
+
+using namespace std;
+
 /**
  * @brief Clase fecha
  */
@@ -29,6 +34,7 @@ public:
     bool operator <= (const Fecha& fecha);
     bool operator != (const Fecha& fecha);
     bool operator > (const Fecha& fecha);
+    string toCVS();
 private:
     int dia; ///< Dia dentro de un mes
     int mes; ///< Mes dentro de un año

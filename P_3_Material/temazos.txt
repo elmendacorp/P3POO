@@ -1,0 +1,9 @@
+comienzo de datos
+Vaya torito;El Fari;194;0;aldeavieja;;;2014;5;24;
+Vaya torito;El Fari2;194;0;aldeavieja;;;2014;5;24;
+Bar Felipe Sanchez1;C/ Besugo nº 4, 72123, Alcornarejo;
+Bar Felipe Sanchez2;C/ Besugo nº 4, 72123, Alcornarejo;
+2016;10;12;
+2016;10;13;
+2016;10;14;
+2016;10;15;
